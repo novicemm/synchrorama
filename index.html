@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Lip-Synchronized and Emotion-Aware Talking Face Generation via Multi-Modal Emotion Embedding.">
+  <meta name="keywords" content="SynchroRaMa, TalkingFace, Emotion">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SynchroRaMa : Lip-Synchronized and Emotion-Aware Talking Face Generation via Multi-Modal Emotion Embedding</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <!-- <h1 class="title is-1 publication-title" style="font-weight:700; color:#5f5f87;">SynchroRaMa</h1> -->
+          <h1 class="title is-1 publication-title" style="font-weight:700;"><b>SynchroRaMa</b></h1>
+          <h2 class="title is-3 publication-title" style="font-size:2.1rem;">Lip-Synchronized and Emotion-Aware Talking Face Generation via Multi-Modal Emotion Embedding</h2>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Phyo Thet Yee</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://sites.google.com/view/dimitrioskollias/home?authuser=0">Dimitrios Kollias</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="">Sudeepta Mishra</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://research.monash.edu/en/persons/abhinav-dhall">Abhinav Dhall</a><sup>3</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Indian Institute of Technology Ropar,</span>
+            <span class="author-block"><sup>2</sup>Queen Mary University of London,</span>
+            <span class="author-block"><sup>3</sup>Monash University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+  
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div>
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%"> -->
+      <video id="teaser" autoplay controls loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+      
+<!-- <section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/teaser1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/teaser2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/teaser3.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/teaser4.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/teaser5.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+          Audio-driven talking face generation has received growing interest, particularly for applications requiring expressive 
+          and natural human-avatar interaction. However, most existing emotion-aware methods rely on a single modality (either audio or image) 
+          for emotion embedding, limiting their ability to capture nuanced affective cues. Additionally, most methods condition on a single 
+          reference image, restricting the model’s ability to represent dynamic changes in actions or attributes across time.    
+          To address these issues, we introduce <i>SynchroRaMa</i>, a novel framework that integrates a multi-modal emotion embedding 
+          by combining emotional signals from text (via sentiment analysis) and audio (via speech-based emotion recognition and 
+          audio-derived valence-arousal features), enabling the generation of talking face videos with richer and more authentic 
+          emotional expressiveness and fidelity. To ensure natural head motion and accurate lip synchronization, <i>SynchroRaMa</i> 
+          includes an audio-to-motion (A2M) module that generates motion frames aligned with the input audio. Finally, <i>SynchroRaMa</i> 
+          incorporates scene descriptions generated by Large Language Model (LLM) as additional textual input, enabling it to capture 
+          dynamic actions and high-level semantic attributes. Conditioning the model on both visual and textual cues enhances temporal 
+          consistency and visual realism. Quantitative and qualitative experiments on benchmark datasets demonstrate that <i>SynchroRaMa</i>
+          outperforms the state-of-the-art, achieving improvements in image quality, expression preservation, and motion realism. 
+          A user study further confirms that <i>SynchroRaMa</i> achieves higher subjective ratings than competing methods in overall 
+          naturalness, motion diversity, and video smoothness. Code and model weights will be released upon acceptance. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+
+    <!-- Model Pipeline. -->
+      <br />
+      <h2 class="title is-3 is-centered has-text-centered">Overview</h2>
+      <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body has-text-centered">
+          <img src="./static/images/pipeline.png"
+              alt="Architecture Image"
+              class="interpolation-image"
+              style="max-width: 100%; height: auto;" />
+            <p style="text-align: justify;">Overall Architecture of SynchroRaMa. The framework takes a reference image, LLM-generated textual description, 
+              and driving audio as input. It operates in two stages. In the first stage, ReferenceNet encodes visual-textual 
+              appearance features from the reference image and textual description. Motion frames are also added to ensure 
+              temporal smoothness and coherence across frames. In the second stage, these features are integrated with audio 
+              projection and a multi-modal emotion embedding within the Denoising UNet during the diffusion process.</p>
+        </div>
+      </div>
+     </section>
+    
+    <!--/ Model Pipeline. -->
+
+<!-- Avator Character -->
+<h2 class="title is-3 is-centered has-text-centered">Avator Character</h2>
+<section class="hero is-light is-small"> 
+  <div class="hero-body">  
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/avatar1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/avatar2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/avatar3.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/avatar4.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/avatar5.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Avator Character -->  
+
+</br>
+<!-- Real Actor -->
+<h2 class="title is-3 is-centered has-text-centered">Real Actor</h2>
+<section class="hero is-light is-small"> 
+  <div class="hero-body">  
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/real_actor1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/real_actor2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/real_actor3.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/real_actor4.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/real_actor5.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Real Actor -->  
+
+</br>
+<!-- Movie Scene -->
+<h2 class="title is-3 is-centered has-text-centered">Movie Scene</h2>
+<section class="hero is-light is-small"> 
+  <div class="hero-body">  
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/movie_scene1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/movie_scene2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/movie_scene3.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/movie_scene4.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/movie_scene5.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/movie_scene6.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Movie Scene -->  
+
+</br>
+<!-- Singing -->
+<h2 class="title is-3 is-centered has-text-centered">Singing</h2>
+<section class="hero is-light is-small"> 
+  <div class="hero-body">  
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/singing1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/singing2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/singing3.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/singing4.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Singing -->  
+
+<br>
+  <h2 class="title is-3 is-centered has-text-centered">Expressive Video</h2>
+    <div class="column is-centered has-text-centered is-10 is-offset-1" id="teaserVideos">
+      <div class="columns is-centered is-variable is-0">
+        <div class="column " style="position:relative; padding:0px; font-size:1em">
+          <video class="video" controls playsinline>
+            <source src="./static/videos/happy.mp4" type="video/mp4">
+          </video>
+          <div style="text-align:center; font-size:1.5em; margin-top:-5px;">
+            <p>Happy</p>
+          </div>
+        </div>
+        <!-- <div class="column" style="position:relative; padding:0px; font-size:1em">
+          <video class="video" controls playsinline>
+            <source src="./static/videos/sad.mp4" type="video/mp4">
+          </video>
+          <div style="text-align:center; font-size:1.5em; margin-top:-5px;">
+            <p>Sad</p>
+          </div>
+        </div> -->
+        <div class="column " style="position:relative; padding:0px; font-size:1em">
+          <video class="video" controls playsinline>
+            <source src="./static/videos/anger.mp4" type="video/mp4">
+          </video>
+          <div style="text-align:center; font-size:1.5em; margin-top:-5px;">
+            <p>Anger</p>
+          </div>
+        </div>
+        <div class="column " style="position:relative; padding:0px; font-size:1em">
+          <video class="video" controls playsinline>
+            <source src="./static/videos/fear.mp4" type="video/mp4">
+          </video>
+          <div style="text-align:center; font-size:1.5em; margin-top:-5px;">
+            <p>Fear</p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="columns is-centered is-variable is-0">
+        <div class="column" style="position:relative; padding:0px; font-size:1em">
+          <video class="video" controls playsinline>
+            <source src="https://github.com/memoavatar/memoavatar.github.io/raw/main/static/videos/singing_2.mp4" type="video/mp4">
+          </video>
+          <div style="text-align:center; font-size:1em; margin-top:-5px;">
+            <p>Image: Scarlett Johansson</p>
+            <p>Audio: 松原みき - Stay With Me (真夜中のドア) (Singing)</p>
+          </div>
+        </div>
+        <div class="column" style="position:relative; padding:0px; font-size:1em">
+          <video class="video" controls playsinline>
+            <source src="https://github.com/memoavatar/memoavatar.github.io/raw/main/static/videos/speech_1.mp4" type="video/mp4">
+          </video>
+          <div style="text-align:center; font-size:1em; margin-top:-5px;">
+            <p>Image: Yoshua Bengio</p>
+            <p>Audio: Pulp Fiction - Ezekiel 25:17 (Speech)</p>
+          </div>
+        </div>
+        <div class="column" style="position:relative; padding:0px; font-size:1em">
+          <video class="video" controls playsinline>
+            <source src="https://github.com/memoavatar/memoavatar.github.io/raw/main/static/videos/singing_1.mp4" type="video/mp4">
+          </video>
+          <div style="text-align:center; font-size:1em; margin-top:-5px;">
+            <p>Image: Anne Hathaway</p>
+            <p>Audio: Idina Menzel - Let It Go (from Frozen) (Singing)</p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+  <br> 
+<!--Generated Videos-->
+<!-- <section class="hero teaser"> 
+<h2 class="title is-3 is-centered has-text-centered">Avator Character</h2>
+    <div class="column is-centered has-text-centered is-10 is-offset-1" id="teaserVideos">
+      <div class="columns is-centered is-variable is-0">
+        <div class="column" style="position:relative; padding:0px; font-size:1em">
+          <video class="video" controls playsinline>
+            <source src="./static/videos/generated_video1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column" style="position:relative; padding:0px; font-size:1em">
+          <video class="video" controls playsinline>
+            <source src="./static/videos/generated_video2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column" style="position:relative; padding:0px; font-size:1em">
+          <video class="video" controls playsinline>
+            <source src="./static/videos/generated_video3.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </br>
+      <div class="columns is-centered is-variable is-0">
+        <div class="column" style="position:relative; padding:0px; font-size:1em">
+          <video class="video" controls playsinline>
+            <source src="./static/videos/generated_video4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column" style="position:relative; padding:0px; font-size:1em">
+          <video class="video" controls playsinline>
+            <source src="./static/videos/generated_video5.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="column" style="position:relative; padding:0px; font-size:1em">
+          <video class="video" controls playsinline>
+            <source src="./static/videos/generated_video6.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+</section> -->
+ <!--Generated Videos-->
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{,
+  author    = {},
+  title     = {},
+  journal   = {},
+  year      = {},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This project page was created with the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">
+            Project Page Template </a>, adapted from <a
+              href="https://github.com/nerfies/nerfies.github.io">NERFies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
